@@ -75,7 +75,7 @@ pipeline {
                         withCredentials([file(credentialsId: 'app-dev-yml', variable: 'SECRET_YML')]) {
                             // 오직 config-service에만 복사
                             sh """
-                            cp \$SECRET_YML /config-service/src/main/resources/application-dev.yml
+                            cp \$SECRET_YML config-service/src/main/resources/application-dev.yml
                             """
                         }
                     }
