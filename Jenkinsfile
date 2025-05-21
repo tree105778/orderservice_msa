@@ -97,9 +97,9 @@ pipeline {
 			steps {
 				script {
 					// jenkins에 저장된 credentials를 사용하여 AWS 자격 증명을 설정.
-					withAws(region: "${REGION}", credentials: "aws-key")
-					def changedServices = env.CHANGED_SERVICES.split(",")
-					changedServices.each { service ->
+					withAWS(region: "${REGION}", credentials: "aws-key") {
+                        def changedServices = env.CHANGED_SERVICES.split(",")
+					    changedServices.each { service ->
 						sh """
 						# ECR에 접속해서 인증 정보를 대신 검증해 주는 도구 다운로드.
 						# /usr/local/bin/ 경로에 해당 파일을 이동
@@ -116,7 +116,10 @@ pipeline {
 
                         docker push ${ECR_URL}/${service}:latest
 						"""
+
 					}
+
+				}
 
 
 				}
