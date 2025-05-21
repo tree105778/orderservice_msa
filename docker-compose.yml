@@ -2,7 +2,7 @@
 version: '3.8'
 services:
   config-service:
-    image: twqetq0415/config-service:1.0
+    image: 799460610594.dkr.ecr.ap-northeast-2.amazonaws.com/config-service:latest
     container_name: config-service
     networks:
       - msa-network
@@ -17,7 +17,7 @@ services:
     restart: always # 컨테이너가 모종의 이유로 중지되면 무조건 재시작 시도.
 
   discovery-service:
-    image: twqetq0415/discovery-service
+    image: 799460610594.dkr.ecr.ap-northeast-2.amazonaws.com/discovery-service:latest
     container_name: discovery-service
     networks:
       - msa-network
@@ -32,7 +32,7 @@ services:
     restart: always # 컨테이너가 모종의 이유로 중지되면 무조건 재시작 시도.
 
   gateway-service:
-    image: twqetq0415/gateway-service
+    image: 799460610594.dkr.ecr.ap-northeast-2.amazonaws.com/gateway-service:latest
     container_name: gateway-service
     networks:
       - msa-network
@@ -47,7 +47,7 @@ services:
     restart: always
 
   user-service:
-    image: twqetq0415/user-service
+    image: 799460610594.dkr.ecr.ap-northeast-2.amazonaws.com/user-service:latest
     container_name: user-service
     networks:
       - msa-network
@@ -60,7 +60,7 @@ services:
     restart: always
 
   order-service:
-    image: twqetq0415/order-service
+    image: 799460610594.dkr.ecr.ap-northeast-2.amazonaws.com/ordering-service:latest
     container_name: order-service
     networks:
       - msa-network
@@ -73,7 +73,7 @@ services:
     restart: always
 
   product-service:
-    image: twqetq0415/product-service
+    image: 799460610594.dkr.ecr.ap-northeast-2.amazonaws.com/product-service:latest
     container_name: product-service
     networks:
       - msa-network
