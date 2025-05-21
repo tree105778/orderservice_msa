@@ -69,6 +69,19 @@ pipeline {
                 }
             }
 
+            stage('Copy Secret YML to Config Service') {
+                steps {
+                    script {
+                        withCredentials([file(credentialsId: 'app-dev-yml', variable: 'SECRET_YML')]) {
+                            // 오직 config-service에만 복사
+                            sh """
+                            cp \$SECRET_YML /config-service/src/main/resources/application-dev.yml
+                            """
+                        }
+                    }
+                }
+            }
+
             stage('Build Changed Services') {
                 // 이 스테이지는 빌드되어야 할 서비스가 존재한다면 실행되는 스테이지.
                 // 이전 스테이지에서 세팅한 CHANGED_SERVICES라는 환경변수가 비어있지 않아야만 실행.
