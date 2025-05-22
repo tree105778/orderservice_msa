@@ -1,21 +1,5 @@
-server:
-  port: 8888
+# 서비스 변경 감지용 주석
 
 spring:
-  application:
-    name: config-service
-  cloud:
-    config:
-      server:
-        git:
-          uri: ${GITHUB_URL}
-          default-label: main
-          username: ${USERNAME}
-          password: ${TOKEN}
-
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health, refresh, beans
+  profiles:
+    active: dev

@@ -9,12 +9,6 @@ services:
     ports:
       - "8888:8888"
 
-    environment:
-      - GITHUB_URL=${GITHUB_URL}
-      - USERNAME=${GITHUB_USERNAME}
-      - TOKEN=${GITHUB_TOKEN}
-    env_file:
-      - .env
     healthcheck:
       test: [ "CMD", "curl", "-f","http://config-service:8888/actuator/health" ]
       interval: 15s # 15초마다 한번씩 체크
